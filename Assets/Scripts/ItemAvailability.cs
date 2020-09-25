@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Player;
+//Defines when an item becomes available and adds money and scores
 
 namespace Itemas
 {
@@ -13,6 +14,10 @@ namespace Itemas
         private Playa playa = null;
 
         [Header("Buttons")]
+        public bool itemActivated = false;
+        [SerializeField,Tooltip("Attatch to Coming Soon Scribble")]
+        private GameObject comingsoon = null;
+        
         [SerializeField, Tooltip("Attach to Button (On Click Functionality)")]
         private Button itemBut = null;
         [SerializeField, Tooltip("Attach to Button (Availability Functionality")]
@@ -22,10 +27,30 @@ namespace Itemas
         private Text costText = null;
         [SerializeField, Tooltip("Attach to  itemSold/Price/Sold Text")]
         private Text soldText = null;
+        [SerializeField, Tooltip("Attach to  itemSold/Price/Sold Text")]
+        private Text comingSoonText = null;
         [SerializeField, Tooltip("Attach to ItemSold Object")]
-        private GameObject itemSold = null;
+        private GameObject itemSold=null;
+        
         [SerializeField, Tooltip("Cost of Meow Meow")]
         private int itemCost = 10;
+
+        [Header("Sound Effects")]
+        [SerializeField, Tooltip("Volume that Sounds when Button Hit")]
+        private float buttonVolume = 0.5f;
+        [SerializeField, Tooltip("Attach to ButtonSound Source")]
+        private AudioSource buttonSound=null;
+        [SerializeField, Tooltip("The Sound that is Triggered")]
+        private AudioClip itemSound=null;
+        [SerializeField, Tooltip("Volume that Sounds when Coin is Added")]
+        private AudioSource coinSoundBut=null;
+        [SerializeField, Tooltip("Attach to coinSound Source")]
+        private AudioClip coinSound=null;
+        [SerializeField, Tooltip("The Sound that is Triggered")]
+        private float coinSoundVolume=2f;
+
+     
+  
 
 
         [Header("Settings for Generic Items")]
@@ -42,12 +67,20 @@ namespace Itemas
         private void Start()
         {
             itemBut.onClick.AddListener(ButPress);
+        
         }
         private void Update()
         {
             ItemAvailMeth();
 
-            GenericItemScorerMeth();
+            
+           //after item is activated, destorys coming soon and launches Scorer
+            if (itemActivated==true)
+            {
+                Destroy(comingsoon);
+                comingsoon = null;
+                GenericItemScorerMeth();
+            }
 
         }
         /// <summary>
@@ -57,16 +90,22 @@ namespace Itemas
         /// </summary>
         private void GenericItemScorerMeth()
         {
-            if (currentTime <= 0)
+            if (itemCount>=1)
             {
-                playa.moolah += itemCount * multiplier;
-                playa.scoreValue += itemCount * multiplier;
-                currentTime = currentStartTime;
+                if (currentTime <= 0)
+                {
+
+                    playa.moolah += itemCount * multiplier;
+                    playa.scoreValue += itemCount * multiplier;
+                    currentTime = currentStartTime;
+                    coinSoundBut.PlayOneShot(coinSound, coinSoundVolume);
+                }
+                else
+                {
+                    currentTime -= Time.deltaTime;
+                }
             }
-            else
-            {
-                currentTime -= Time.deltaTime;
-            }
+       
         }
 
         /// <summary>
@@ -76,17 +115,25 @@ namespace Itemas
         /// </summary>
         private void ItemAvailMeth()
         {
+            comingSoonText.text = "" + itemCost;
             costText.text = "" + itemCost;
             soldText.text = "" + itemCost;
 
-            if (playa.moolah >= itemCost)
-            {
-                nextItemBut.SetActive(true);
-                itemSold.SetActive(true);
-            }
-            if (playa.moolah < itemCost)
+
+      
+            if (playa.moolah < itemCost && itemActivated==true)
             {
                 nextItemBut.SetActive(false);
+                itemSold.SetActive(true);
+
+            }
+            if (playa.moolah >= itemCost)
+            {
+
+                nextItemBut.SetActive(true);
+                itemSold.SetActive(false);
+                itemActivated = true;
+
             }
         }
         /// <summary>
@@ -94,6 +141,7 @@ namespace Itemas
         /// </summary>
         void ButPress()
         {
+            buttonSound.PlayOneShot(itemSound, buttonVolume);
             playa.moolah -= itemCost;
             itemCount += 1;
         }
