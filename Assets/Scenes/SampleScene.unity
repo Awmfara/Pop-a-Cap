@@ -672,7 +672,7 @@ MonoBehaviour:
   comingSoonText: {fileID: 1883657778}
   itemSold: {fileID: 1085809340}
   itemCost: 10
-  buttonVolume: 0.5
+  buttonVolume: 2.01
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: 2297dd07c282fb54aaafa9ded6accddb, type: 3}
   coinSoundBut: {fileID: 900473338}
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   comingSoonText: {fileID: 765700718}
   itemSold: {fileID: 376195380}
   itemCost: 500
-  buttonVolume: 0.5
+  buttonVolume: 1.16
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: 2e6c43e28c0b6ef44a07d680668a53d6, type: 3}
   coinSoundBut: {fileID: 900473338}
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   comingSoonText: {fileID: 2037654343}
   itemSold: {fileID: 562832614}
   itemCost: 10000
-  buttonVolume: 0.5
+  buttonVolume: 1.01
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: cc911a76b1675eb479a86a912d2e0c8f, type: 3}
   coinSoundBut: {fileID: 900473338}
@@ -2989,7 +2989,7 @@ MonoBehaviour:
   comingSoonText: {fileID: 5441904}
   itemSold: {fileID: 358801199}
   itemCost: 300
-  buttonVolume: 0.5
+  buttonVolume: 1.29
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: 52a3ca67b0270eb44ba297f35b53f721, type: 3}
   coinSoundBut: {fileID: 900473338}
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   comingSoonText: {fileID: 1826665067}
   itemSold: {fileID: 1677730054}
   itemCost: 20
-  buttonVolume: 0.5
+  buttonVolume: 3.23
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: b27e1a9822281bf4c823e5643073e1df, type: 3}
   coinSoundBut: {fileID: 900473338}
@@ -4598,7 +4598,7 @@ MonoBehaviour:
   itemSold: {fileID: 5531021947557804016, guid: 965813d8517ba0044a4f151d8e6747f2,
     type: 3}
   itemCost: 100000
-  buttonVolume: 0.5
+  buttonVolume: 1.1
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: 397a8b9aac0c6c042a8c35562ff57fc6, type: 3}
   coinSoundBut: {fileID: 900473338}
@@ -4990,7 +4990,7 @@ MonoBehaviour:
   comingSoonText: {fileID: 480313235}
   itemSold: {fileID: 1853468360}
   itemCost: 1000
-  buttonVolume: 0.5
+  buttonVolume: 1.18
   buttonSound: {fileID: 600076876}
   itemSound: {fileID: 8300000, guid: af72648e31575f640a9698954d327c49, type: 3}
   coinSoundBut: {fileID: 900473338}
